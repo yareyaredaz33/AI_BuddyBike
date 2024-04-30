@@ -28,18 +28,47 @@ function sendMessage() {
 
   // Display user message
   chatDisplay.innerHTML += "<p><strong>You:</strong> " + userInput + "</p>";
+  var siteContext = "You are chat bot assistant on bike-themed site. we sell 3 types of bikes: electric, city and forest. We have special plan for students that provides 10% discount. We ship to every country for 100$. You need to answer the question and provide maxium information in 2-3 sentences. based on given information"
 
-  // Dummy response for testing
-  var dummyResponse = "This is a dummy response. Replace it with the actual response from GPT-3.";
+  // Set up the OpenAI API request
+  
+  const url = 'https://api.openai.com/v1/chat/completions';
+  const data = {
+    model: 'gpt-3.5-turbo',
+    messages: [
+      { role: 'system', content: siteContext }, 
+      { role: 'user', content: userInput }
+  ],
+    max_tokens: 500,
+    temperature: 0.5,
+  };
+  const jsonData = JSON.stringify(data);
+  console.log('API request:', url, data);
 
-  // Display response from GPT-3
-  chatDisplay.innerHTML += "<p><strong>Chatbot:</strong> " + dummyResponse + "</p>";
+  // Make the OpenAI API request
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ',
+    },
+    body: jsonData,
+  })
+ .then(response => {
+    console.log('API response:', response);
+    return response.json();
+  })
+ .then(data => {
+    console.log('API response data:', data);
+    const chatbotResponse = data.choices[0].message.content;
+    chatDisplay.innerHTML += "<p><strong>Chatbot:</strong> " + chatbotResponse + "</p>";
 
   // Clear user input field
   document.getElementById('user-input').value = "";
 
   // Scroll to the bottom of the chat display
   chatDisplay.scrollTop = chatDisplay.scrollHeight;
+})
 }
 var audio = document.getElementById("myAudio");
 

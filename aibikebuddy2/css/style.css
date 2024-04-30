@@ -364,13 +364,36 @@ body {
 }
 .product {
   display: flex;
-  margin: 30px 10%;
-  padding: 15px;
-  background-color: #455732;
-  border-radius: 10px;
-
-
+  flex-direction: column;
+  /* Stack children vertically */
+  align-items: center;
+  /* Center items horizontally */
+  text-align: center;
+  /* Center text */
+  margin-bottom: 20px;
+  /* Add some space below each product */
 }
+
+.details {
+  display: flex;
+  flex-direction: column;
+  /* Stack children vertically */
+  align-items: flex-start;
+  /* Align items to the start of the container */
+  padding: 10px;
+}
+
+h2 {
+  margin: 10px 0;
+  /* Add space above and below the heading */
+}
+
+p {
+  margin: 10px 0;
+  /* Add space above and below the paragraph */
+}
+
+
 .product:hover{
   background-color: #587340;
 }
@@ -379,11 +402,10 @@ body {
   width: 200px;
   height: 200px;
   margin-right: 20px;
+  border-radius: 5px;
+
 }
 
-.details {
-  flex: 1;
-}
 
 .details h2 {
   font-size: 1.5em;
@@ -403,4 +425,64 @@ h1{
   margin: 0;
   padding: 10px;
   background-color: #2f3f25;
+  justify-content: center;
+
+}/* styles.css */
+#myAudio{
+  margin: 0 10%;
+}
+/* styles.css */
+img{
+  width: 50%;
+}
+#chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+.container {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  height: 100vh; /* Adjust as needed */
+}
+
+.content {
+  text-align: center; /* Center content inside the container */
+}
+
+.content img {
+  max-width: 100%; /* Ensure image doesn't exceed container width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.content audio {
+  margin-top: 20px; /* Space between image and audio player */
+}
+
+#chat-container {
+  display: none; /* Initially hidden */
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+}
+
+#chat-display {
+  background-color: rgba(119, 133, 108, 0.45);
+  height: 300px;
+  overflow-y: scroll;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+#user-input {
+  width: calc(100% - 70px);
+  padding: 5px;
+  margin-right: 0px;
+}
+
+button {
+  padding: 5px 10px;
 }

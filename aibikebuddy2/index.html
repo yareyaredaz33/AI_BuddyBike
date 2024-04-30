@@ -30,11 +30,18 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href=".html">Contact</a></li>
     </ul>
   </nav>
 </header>
-
+<div id="chat-widget">
+  <button id="chat-toggle" onclick="toggleChat()">Chat</button>
+  <div id="chat-container">
+    <div id="chat-display"></div>
+    <input type="text" id="user-input" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
 <div class="picture">
   <section class="hero">
     <h2>Discover the joy of biking</h2>
@@ -61,7 +68,7 @@
   </div>
 
   <div class="product">
-    <img src="img/bike1.jpg" alt="Road Bike">
+    <img src="img/forest1.png" alt="Road Bike">
     <div class="details">
       <h2>Road Bike</h2>
       <p>Forest Explorer Description: The Forest Explorer is the perfect companion for adventurous riders exploring wild
@@ -77,7 +84,7 @@
   </div>
 
   <div class="product">
-    <img src="img/bike1.jpg" alt="Cruiser Bike">
+    <img src="img/forest2.png" alt="Cruiser Bike">
     <div class="details">
       <h2>Cruiser Bike</h2>
       <p>Name: Kid Cruiser Description: The Kid Cruiser is the perfect bike for young riders looking to explore the
@@ -93,6 +100,7 @@
 <footer>
   <p>&copy; 2024 BikeBuddies. All rights reserved.</p>
 </footer>
+<script src="js/app.js"></script>
 </body>
 
 </html>

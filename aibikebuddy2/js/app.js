@@ -28,7 +28,7 @@ function sendMessage() {
 
   // Display user message
   chatDisplay.innerHTML += "<p><strong>You:</strong> " + userInput + "</p>";
-  var siteContext = "You are chat bot assistant on bike-themed site. we sell 3 types of bikes: electric, city and forest. We have special plan for students that provides 10% discount. We ship to every country for 100$. You need to answer the question and provide maxium information in 2-3 sentences. based on given information"
+  var siteContext = "You are chat bot assistant on bike-themed site. we sell 3 types of bikes: electric 'City Spark', city 'Road Bike' and forest 'Forest Explorer'. We have special plan for students that provides 10% discount. We ship to every country for 100$. You need to answer the question and provide maxium information in 2-3 sentences. based on given information"
 
   // Set up the OpenAI API request
   
@@ -78,4 +78,33 @@ function playAudio() {
 
 function pauseAudio() {
   audio.pause();
+}
+function saveData() {
+  const name = document.getElementById('nameInput').value;
+  const email = document.getElementById('emailInput').value;
+  const review = document.getElementById('reviewInput').value;
+
+  const data = { name, email, review };
+
+  fetch('http://localhost:3000/data', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Error storing data');
+      }
+      return response.text();
+  })
+  .then(message => {
+      console.log(message); // Log success message
+      // Optionally, display a success message to the user
+  })
+  .catch(error => {
+      console.error('Error:', error);
+      // Optionally, display an error message to the user
+  });
 }
